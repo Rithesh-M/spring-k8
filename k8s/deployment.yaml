@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: defaultboot-k8s-demo
+  namespace: springboot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: defaultboot-k8s-demo
+  template:
+    metadata:
+      labels:
+        app: defaultboot-k8s-demo
+    spec:
+      containers:
+        - name: defaultboot-k8s-demo
+          image: defaultbootnew-demo:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
